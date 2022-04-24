@@ -1,0 +1,19 @@
+[submodule ".modules/graph-cli"]
+	path = .modules/graph-cli
+	url = https://github.com/chainSafe/graph-cli
+	branch = cs/arweave
+	shallow = true
+[submodule ".modules/graph-node"]
+	path = .modules/graph-node
+	url = https://github.com/ChainSafe/graph-node.git
+	branch = cs/arweave
+	shallow = true
+[submodule ".modules/graph-ts"]
+	path = .modules/graph-ts
+	url = https://github.com/chainSafe/graph-ts
+	branch = cs/arweave
+	shallow = true
+[submodule ".modules/firehose-arweave"]
+	path = .modules/firehose-arweave
+	url = https://github.com/ChainSafe/firehose-arweave.git
+	shallow = true

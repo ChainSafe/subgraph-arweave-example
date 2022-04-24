@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "name": "subgraph-arweave-example",
+  "version": "0.1.0",
+  "description": "subgraph example for Arweave",
+  "main": "index.js",
+  "repository": "git@github.com:ChainSafe/subgraph-arweave-example.git",
+  "author": "info@chainsafe.io",
+  "license": "MIT",
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "./.modules/graph-cli",
+    "@graphprotocol/graph-ts": "./.modules/graph-ts"
+  },
+  "scripts": {
+    "up": "./.maintain/up.sh",
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "create-local": "graph create arweave-example --node http://localhost:8020",
+    "deploy-local": "graph deploy arweave-example -l v0.1.0 --ipfs http://localhost:5001 --node http://localhost:8020",
+    "remove-local": "graph remove arweave-example --node http://localhost:8020"
+  }
+}
