@@ -1,0 +1,22 @@
+specVersion: 0.0.5
+description: Arweave Blocks Indexing
+repository: https://github.com/ChainSafe/subgraph-arweave-example
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: arweave
+    name: arweave-blocks
+    network: arweave-mainnet
+    source:
+      startBlock: 0
+    mapping:
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/blocks.ts
+      entities:
+        - Block
+        - Tag
+        - Transaction
+        - Poa
+      blockHandlers:
+        - handler: handleBlock
