@@ -23,7 +23,7 @@ export function handleBlock(block: arweave.Block): void {
   entity.block_size = block.blockSize;
   entity.cumulative_diff = block.cumulativeDiff;
   entity.hash_list_merkle = block.hashListMerkle;
-  entity.poa = savePoa(hash, block.poa);
+  entity.poa = savePoa(hash, block.poa)
 
   entity.save()
 }
@@ -57,7 +57,8 @@ function saveTags(id: string, tags: arweave.Tag[]): string[] {
 }
 
 
-function saveTxs(id: string, txs: arweave.Transaction[]): string[] {
+function saveTxs(hash: string, txs: arweave.Transaction[]): string[] {
+  let ids = new Array<string>();
   for (let i = 0; i < txs.length; i++) {
     const rawTx = txs[i];
     const id = rawTx.id.toHexString();
@@ -76,7 +77,8 @@ function saveTxs(id: string, txs: arweave.Transaction[]): string[] {
     tx.reward = rawTx.reward;
 
     tx.save();
+    ids.push(id);
   }
 
-  return new Array<string>(txs.length).fill(id);
+  return ids;
 }

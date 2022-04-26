@@ -14,10 +14,10 @@ type Block @entity {
   wallet_list: Bytes!
   reward_addr: Bytes!
   tags: [Tag!]!
-  reward_pool: BigInt!
-  weave_size: BigInt!
-  block_size: BigInt!
-  cumulative_diff: BigInt!
+  reward_pool: Bytes!
+  weave_size: Bytes!
+  block_size: Bytes!
+  cumulative_diff: Bytes!
   hash_list_merkle: Bytes!
   poa: Poa
 }
