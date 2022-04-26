@@ -1,6 +1,5 @@
 type Block @entity {
   id: ID!
-  number: BigInt!
 
   timestamp: BigInt!
   last_retarget: BigInt!
@@ -15,10 +14,10 @@ type Block @entity {
   wallet_list: Bytes!
   reward_addr: Bytes!
   tags: [Tag!]!
-  reward_pool: Bytes!
-  weave_size: Bytes!
-  block_size: Bytes!
-  cumulative_diff: Bytes!
+  reward_pool: BigInt!
+  weave_size: BigInt!
+  block_size: BigInt!
+  cumulative_diff: BigInt!
   hash_list_merkle: Bytes!
   poa: Poa
 }
@@ -26,7 +25,7 @@ type Block @entity {
 type Transaction @entity {
   id: ID!
 
-  id: Bytes!
+  tx_id: Bytes!
   last_tx: Bytes!
   owner: Bytes!
   tags: [Tag!]!
