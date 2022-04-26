@@ -11,20 +11,20 @@ git submodule update --init
 1. Run ingester
 
 ```
-./devel/standard/start.sh
+./.modules/firehose-arweave/devel/standard/start.sh
 ```
 
-2. prepare the environment for `graph-node`
+2. Prepare the environment of `graph-node`
 
 ```
 yarn up
 ```
 
-3. run graph-node
+3. Run graph-node
 
 ```
 cargo b --manifest-path .modules/graph-node/node/Cargo.toml --release
-./target/release/graph-node -c .maintain/config.toml --ipfs http://0.0.0.0:5001
+./.modules/graph-node/target/release/graph-node --config .maintain/config.toml --ipfs http://0.0.0.0:5001
 ```
 
 ## Build
