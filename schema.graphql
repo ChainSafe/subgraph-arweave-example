@@ -10,7 +10,7 @@ type Block @entity {
   diff: Bytes!
   hash: Bytes!
   tx_root: Bytes!
-  txs: [String!]!
+  txs: [Bytes!]!
   wallet_list: Bytes!
   reward_addr: Bytes!
   tags: [Tag!]!
@@ -25,6 +25,7 @@ type Block @entity {
 type Transaction @entity {
   id: ID!
 
+  block: Bytes!
   tx_id: Bytes!
   last_tx: Bytes!
   owner: Bytes!

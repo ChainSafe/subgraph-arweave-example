@@ -56,9 +56,11 @@ export function handleBlock(block: arweave.Block): void {
 }
 
 
-export function handleTx(tx: arweave.Transaction): void {
+export function handleTx(tb: arweave.TransactionWithBlockPtr): void {
+  const tx = tb.tx;
   const entity = new Transaction(tx.id.toHexString());
 
+  entity.block = tb.block.indepHash;
   entity.tx_id = tx.id;
   entity.last_tx = tx.lastTx;
   entity.owner = tx.owner;
