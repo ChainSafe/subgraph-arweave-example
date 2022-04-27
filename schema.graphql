@@ -10,7 +10,7 @@ type Block @entity {
   diff: Bytes!
   hash: Bytes!
   tx_root: Bytes!
-  txs: [Transaction!]!
+  txs: [String!]!
   wallet_list: Bytes!
   reward_addr: Bytes!
   tags: [Tag!]!

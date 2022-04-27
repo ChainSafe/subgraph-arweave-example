@@ -13,7 +13,7 @@ ingestor = "block_ingestor_node"
 shard = "primary"
 protocol = "arweave"
 provider = [
-  { label = "arweave-mainnet", details = { type = "firehose", url = "http://localhost:16042" }},
+  { label = "arweave-mainnet", details = { type = "firehose", url = "http://0.0.0.0:16042" }},
 ]
 
 [deployment]
