@@ -65,5 +65,6 @@ services:
     command: ["graph-node", "--config", "/config.toml", "--ipfs", "http://host.docker.internal:5001"]
     ports:
       - "8020:8020"
+      - "8000:8000"
     extra_hosts:
       - 'host.docker.internal:host-gateway'
