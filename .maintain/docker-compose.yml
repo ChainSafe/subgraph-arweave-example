@@ -42,7 +42,7 @@ services:
     container_name: firehose-arweave
     image: firehose-arweave
     volumes:
-      - ./data/fire-data:fire-data
+      - ./data/fire-data:/fire-data
     build:
       context: ../.modules/firehose-arweave
       dockerfile: ./Dockerfile
@@ -62,7 +62,8 @@ services:
       - postgres:postgres
       - ipfs:ipfs/go-ipfs
       - firehose:firehose-arweave
-    command: ["graph-node", "--config", "/config.toml", "--ipfs", "http://host.docker.internal:5001"]
+    command: ["--config", "/config.toml", "--ipfs", "http://host.docker.internal:5001"]
+    restart: on-failure
     ports:
       - "8020:8020"
       - "8000:8000"
