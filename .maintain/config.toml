@@ -2,7 +2,7 @@
 
 [store]
 [store.primary]
-connection = "postgresql://graph-node:let-me-in@localhost:5432/graph-node"
+connection = "postgresql://graph-node:let-me-in@host.docker.internal:5432/graph-node"
 weight = 1
 pool_size = 10
 
@@ -13,7 +13,7 @@ ingestor = "block_ingestor_node"
 shard = "primary"
 protocol = "arweave"
 provider = [
-  { label = "arweave-mainnet", details = { type = "firehose", url = "http://0.0.0.0:16042" }},
+  { label = "arweave-mainnet", details = { type = "firehose", url = "http://host.docker.internal:16042" }},
 ]
 
 [deployment]

@@ -41,6 +41,8 @@ services:
   firehose:
     container_name: firehose-arweave
     image: firehose-arweave
+    volumes:
+      - ./data/fire-data:fire-data
     build:
       context: ../.modules/firehose-arweave
       dockerfile: ./Dockerfile
@@ -51,13 +53,17 @@ services:
     image: graph-node
     environment:
       CARGO_NET_GIT_FETCH_WITH_CLI: true
-    build:p
+    build:
       context: ../.modules/graph-node
-      dockerfile: ../../.mantain/graph-node.Dockerfile
+      dockerfile: ../../.maintain/graph-node.Dockerfile
+    volumes:
+      - ./config.toml:/config.toml
     links:
       - postgres:postgres
       - ipfs:ipfs/go-ipfs
       - firehose:firehose-arweave
-    command: ["graph-node", "--config", "config.toml", "--ipfs", "http://0.0.0.0:5001"]
+    command: ["graph-node", "--config", "/config.toml", "--ipfs", "http://host.docker.internal:5001"]
     ports:
       - "8020:8020"
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
