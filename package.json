@@ -13,7 +13,7 @@
   },
   "scripts": {
     "setup": "docker compose -f ./.maintain/docker-compose.yml build && npm i .modules/graph-cli",
-    "up": "./.maintain/up.sh",
+    "up": "docker compose -f ./.maintain/docker-compose.yml up -d",
     "codegen": "graph codegen",
     "build": "graph build",
     "create-local": "graph create arweave-example --node http://localhost:8020",
