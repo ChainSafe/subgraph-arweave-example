@@ -14,7 +14,6 @@ services:
     ports:
       - "5432:5432"
     command: ["postgres", "-cshared_preload_libraries=pg_stat_statements"]
-    #command: ["postgres", "-cshared_preload_libraries=pg_stat_statements", "-clog_statement=all"]
     environment:
       POSTGRES_USER: graph-node
       POSTGRES_PASSWORD: let-me-in
@@ -33,11 +32,31 @@ services:
     ports:
       - "8081:8081"
     command: ["pgweb", "--bind=0.0.0.0", "--listen=8081", "--binary-codec=hex"]
-    #command: ["pgweb", "--binary-codec=base58"]
-    #command: ["pgweb", "--binary-codec=base64"]
     links:
       - postgres:postgres
     environment:
       - DATABASE_URL=postgres://graph-node:let-me-in@postgres:5432/graph-node?sslmode=disable
     depends_on:
       - postgres
+  firehose:
+    container_name: firehose-arweave
+    image: firehose-arweave
+    build:
+      context: ../.modules/firehose-arweave
+      dockerfile: ./Dockerfile
+    ports:
+      - "16042:16042"
+  graph-node:
+    container_name: graph-node
+    image: graph-node
+    environment:
+      CARGO_NET_GIT_FETCH_WITH_CLI: true
+    build:
+      context: ../.modules/graph-node
+      dockerfile: ./docker/Dockerfile
+    links:
+      - postgres:postgres
+      - ipfs:ipfs/go-ipfs
+      - firehose:firehose-arweave
+    ports:
+      - "8020:8020"
