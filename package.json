@@ -12,6 +12,7 @@
     "@graphprotocol/graph-ts": "file:.modules/graph-ts"
   },
   "scripts": {
+    "setup": "docker compose -f ./.maintain/docker-compose.yml build",
     "up": "./.maintain/up.sh",
     "codegen": "graph codegen",
     "build": "graph build",
