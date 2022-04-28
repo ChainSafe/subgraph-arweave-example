@@ -51,12 +51,13 @@ services:
     image: graph-node
     environment:
       CARGO_NET_GIT_FETCH_WITH_CLI: true
-    build:
+    build:p
       context: ../.modules/graph-node
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ../../.mantain/graph-node.Dockerfile
     links:
       - postgres:postgres
       - ipfs:ipfs/go-ipfs
       - firehose:firehose-arweave
+    command: ["graph-node", "--config", "config.toml", "--ipfs", "http://0.0.0.0:5001"]
     ports:
       - "8020:8020"
