@@ -9,7 +9,9 @@ ADD . /graph-node
 
 ENV CARGO_NET_GIT_FETCH_WITH_CLI=true
 
-RUN cd /graph-node \
+RUN apt update \
+    && apt install cmake \
+    && cd /graph-node \
     && rustup component add rustfmt \
     && RUSTFLAGS="-g" cargo install --locked --path node
 
