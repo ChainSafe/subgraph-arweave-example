@@ -48,6 +48,7 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "16042:16042"
+    command: ["--mindreader-node-endpoints", "https://arweave.net,http://65.108.126.145:1984"]
   graph-node:
     container_name: graph-node
     image: graph-node
